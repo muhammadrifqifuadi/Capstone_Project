@@ -23,14 +23,23 @@ import '../modules/stats/views/stats_view.dart';
 import '../modules/verification/bindings/verification_binding.dart';
 import '../modules/verification/views/verification_view.dart';
 
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  // static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
     GetPage(
       name: _Paths.LOGIN,
       page: () => const LoginView(),
@@ -41,6 +50,16 @@ class AppPages {
       page: () => const RegisterView(),
       binding: RegisterBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.LOGIN,
+    //   page: () => const LoginView(),
+    //   binding: LoginBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.REGISTER,
+    //   page: () => const RegisterView(),
+    //   binding: RegisterBinding(),
+    // ),
     GetPage(
       name: _Paths.PAIRING,
       page: () => const PairingView(),
@@ -58,13 +77,13 @@ class AppPages {
       page: () => const DashboardView(),
       bindings: [
         DashboardBinding(),
-        StatsBinding(),    // Tambahkan ini agar StatsController siap
+        StatsBinding(), // Tambahkan ini agar StatsController siap
         SecurityBinding(), // Memastikan SecurityController tersedia
-        ProfileBinding(),  // Memastikan ProfileController tersedia
+        ProfileBinding(), // Memastikan ProfileController tersedia
       ],
     ),
-    // -----------------------------------------------
 
+    // -----------------------------------------------
     GetPage(
       name: _Paths.FACE_RECOG,
       page: () => const FaceRecogView(),
